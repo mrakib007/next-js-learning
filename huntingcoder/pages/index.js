@@ -15,110 +15,47 @@ export default function Home() {
         <meta name='keywords' content='nextJs,huntingCoder blog, hunting coder'></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-    
+
+      <nav className={styles.mainNav}>
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Contact</li>
+          <li>Blog</li>
+        </ul>
+      </nav>
       <main className={styles.main}>
-        <div className={styles.description}>
-          <p>
-            A blog for the coders by a coder.
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              By{' '}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
-          </div>
+        
+
+        <div className={styles.center}>
+          <h1>Hunting Coder</h1>
         </div>
 
         <div className={styles.center}>
-          {/* <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          /> */}
-          <h1>Hunting Coder</h1>
-          {/* <div className={styles.thirteen}>
-            <Image
-              src="/thirteen.svg"
-              alt="13"
-              width={40}
-              height={31}
-              priority
-            />
-          </div> */}
+          <p>
+            A blog for the coders by a coder.
+          </p>
         </div>
 
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
+        <div className="blogs">
+          <h2>Popular Blogs</h2>
+          <div className="blogItem">
+            <h3>How to learn JavaScript in 2022</h3>
+            <p>JavaScript is a language used for designing web pages
             </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
+          </div>
+          <div className="blogItem">
+            <h3>How to learn JavaScript in 2022</h3>
+            <p>JavaScript is a language used for designing web pages
             </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
+          </div>
+          <div className="blogItem">
+            <h3>How to learn JavaScript in 2022</h3>
+            <p>JavaScript is a language used for designing web pages
             </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
+          </div>
         </div>
+        
       </main>
     </>
   )
