@@ -3,18 +3,21 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import Link from 'next/link';
-import Dummy from '@/components/dummy';
+// import Dummy from '@/components/dummy';
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
     <div className={styles.container}>
-      <Dummy></Dummy>
+      {/* <Dummy></Dummy> */}
       <style jsx>
         {`
-        .mySpan{
-          color: red;
+        h2{
+          font-size:38px;
+        }
+        h3{
+          font-size:28px;
         }
         `}
       </style>
@@ -38,11 +41,16 @@ export default function Home() {
         
 
         <div className={styles.center}>
+          {/* <span className="mySpan dummy">
+          <h1>Hunting Coder</h1>
+          </span> */}
           <span className="mySpan dummy">
           <h1>Hunting Coder</h1>
           </span>
         </div>
-
+        <div className={styles.imageWrap}>
+        <Image className={styles.myImg} src="/homeImage.jpg" alt="" height={250} width={400} />
+        </div>
         <div className={styles.center}>
           <p>
             A blog for the coders by a coder.
