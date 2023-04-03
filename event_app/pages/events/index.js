@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Page = () => {
+const EventsPage = () => {
   return (
     <div>
-      <h1>This is events page</h1>
+      <h1>Event Page</h1>
       <div>
       <a href=''>
           <img></img>
@@ -22,4 +22,6 @@ const Page = () => {
   )
 }
 
-export default Page;
+export default EventsPage;
+
+
