@@ -3,6 +3,7 @@ import * as fs from 'fs';
 
 export default async function handler(req, res) {
     let data = await fs.promises.readdir("blogdata");
+    console.log(data)
     data = data.slice(0, parseInt(req.query.count)) 
     let myfile; 
     let allBlogs = [];
@@ -13,3 +14,4 @@ export default async function handler(req, res) {
       }
     res.status(200).json(allBlogs)
 }
+
