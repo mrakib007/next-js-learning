@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,9 +18,9 @@ export default function Home({data}) {
       <header>
         <nav>
           <img src="" alt="" />
-          <a href="/">Home</a>
-          <a href="/events">Events</a>
-          <a href="/about-us">About Us</a>
+          <Link href="/">Home</Link>
+          <Link href="/events">Events</Link>
+          <Link href="/about-us">About Us</Link>
         </nav>
       </header>
       <main className={styles.main}>
