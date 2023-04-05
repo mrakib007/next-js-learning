@@ -34,7 +34,7 @@ const SingleEvent = ({ data }) => {
       <form onSubmit={onSubmit}>
         <label htmlFor="Get's Started For This Event"></label>
         <input ref={inputEmail} type="email" name="" id="email" placeholder="please insert your email here" />
-        <button type="button">Submit</button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );
