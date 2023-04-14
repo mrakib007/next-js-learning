@@ -9,13 +9,12 @@ const TShirts = () => {
           <div className="flex flex-wrap -m-4">
             <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-5">
               <Link href={"/product/wear-the-code"}>
-                <a className="block relative rounded overflow-hidden">
-                  <img
-                    alt="ecommerce"
-                    className="m-auto md:mx-0 h-[30vh] md:h-[36vh] block"
-                    src="https://m.media-amazon.com/images/I/71HFM5GXXjL._AC_UY550_.jpg"
-                  />
-                </a>
+                <img
+                  alt="ecommerce"
+                  className="m-auto md:mx-0 h-[30vh] md:h-[36vh] block relative rounded overflow-hidden"
+                  src="https://m.media-amazon.com/images/I/71HFM5GXXjL._AC_UY550_.jpg"
+                />
+
                 <div className="mt-4 text-center md:text-left">
                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                     T-Shirt
@@ -30,13 +29,12 @@ const TShirts = () => {
             </div>
             <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-5">
               <Link href={"/product/wear-the-code"}>
-                <a className="block relative rounded overflow-hidden">
-                  <img
-                    alt="ecommerce"
-                    className="m-auto md:mx-0 h-[30vh] md:h-[36vh] block"
-                    src="https://m.media-amazon.com/images/I/71HFM5GXXjL._AC_UY550_.jpg"
-                  />
-                </a>
+                <img
+                  alt="ecommerce"
+                  className="m-auto md:mx-0 h-[30vh] md:h-[36vh] block relative rounded overflow-hidden"
+                  src="https://m.media-amazon.com/images/I/71HFM5GXXjL._AC_UY550_.jpg"
+                />
+
                 <div className="mt-4 text-center md:text-left">
                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                     T-Shirt
@@ -51,13 +49,12 @@ const TShirts = () => {
             </div>
             <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-5">
               <Link href={"/product/wear-the-code"}>
-                <a className="block relative rounded overflow-hidden">
-                  <img
-                    alt="ecommerce"
-                    className="m-auto md:mx-0 h-[30vh] md:h-[36vh] block"
-                    src="https://m.media-amazon.com/images/I/71HFM5GXXjL._AC_UY550_.jpg"
-                  />
-                </a>
+                <img
+                  alt="ecommerce"
+                  className="m-auto md:mx-0 h-[30vh] md:h-[36vh] block relative rounded overflow-hidden"
+                  src="https://m.media-amazon.com/images/I/71HFM5GXXjL._AC_UY550_.jpg"
+                />
+
                 <div className="mt-4 text-center md:text-left">
                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                     T-Shirt
@@ -72,13 +69,12 @@ const TShirts = () => {
             </div>
             <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-5">
               <Link href={"/product/wear-the-code"}>
-                <a className="block relative rounded overflow-hidden">
-                  <img
-                    alt="ecommerce"
-                    className="m-auto md:mx-0 h-[30vh] md:h-[36vh] block"
-                    src="https://m.media-amazon.com/images/I/71HFM5GXXjL._AC_UY550_.jpg"
-                  />
-                </a>
+                <img
+                  alt="ecommerce"
+                  className="m-auto md:mx-0 h-[30vh] md:h-[36vh] block relative rounded overflow-hidden"
+                  src="https://m.media-amazon.com/images/I/71HFM5GXXjL._AC_UY550_.jpg"
+                />
+
                 <div className="mt-4 text-center md:text-left">
                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                     T-Shirt
@@ -93,13 +89,12 @@ const TShirts = () => {
             </div>
             <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-5">
               <Link href={"/product/wear-the-code"}>
-                <a className="block relative rounded overflow-hidden">
-                  <img
-                    alt="ecommerce"
-                    className="m-auto md:mx-0 h-[30vh] md:h-[36vh] block"
-                    src="https://m.media-amazon.com/images/I/71HFM5GXXjL._AC_UY550_.jpg"
-                  />
-                </a>
+                <img
+                  alt="ecommerce"
+                  className="m-auto md:mx-0 h-[30vh] md:h-[36vh] block relative rounded overflow-hidden"
+                  src="https://m.media-amazon.com/images/I/71HFM5GXXjL._AC_UY550_.jpg"
+                />
+
                 <div className="mt-4 text-center md:text-left">
                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                     T-Shirt
@@ -114,13 +109,12 @@ const TShirts = () => {
             </div>
             <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-5">
               <Link href={"/product/wear-the-code"}>
-                <a className="block relative rounded overflow-hidden">
-                  <img
-                    alt="ecommerce"
-                    className="m-auto md:mx-0 h-[30vh] md:h-[36vh] block"
-                    src="https://m.media-amazon.com/images/I/71HFM5GXXjL._AC_UY550_.jpg"
-                  />
-                </a>
+                <img
+                  alt="ecommerce"
+                  className="m-auto md:mx-0 h-[30vh] md:h-[36vh] block relative rounded overflow-hidden"
+                  src="https://m.media-amazon.com/images/I/71HFM5GXXjL._AC_UY550_.jpg"
+                />
+
                 <div className="mt-4 text-center md:text-left">
                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                     T-Shirt
@@ -135,13 +129,52 @@ const TShirts = () => {
             </div>
             <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-5">
               <Link href={"/product/wear-the-code"}>
-                <a className="block relative rounded overflow-hidden">
-                  <img
-                    alt="ecommerce"
-                    className="m-auto md:mx-0 h-[30vh] md:h-[36vh] block"
-                    src="https://m.media-amazon.com/images/I/71HFM5GXXjL._AC_UY550_.jpg"
-                  />
-                </a>
+                <img
+                  alt="ecommerce"
+                  className="m-auto md:mx-0 h-[30vh] md:h-[36vh] block relative rounded overflow-hidden"
+                  src="https://m.media-amazon.com/images/I/71HFM5GXXjL._AC_UY550_.jpg"
+                />
+
+                <div className="mt-4 text-center md:text-left">
+                  <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
+                    T-Shirt
+                  </h3>
+                  <h2 className="text-white title-font text-lg font-medium">
+                    Wear The Code
+                  </h2>
+                  <p className="mt-1">৳599</p>
+                  <p className="mt-1">S,M,L,XL,XXL</p>
+                </div>
+              </Link>
+            </div>
+            <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-5">
+              <Link href={"/product/wear-the-code"}>
+                <img
+                  alt="ecommerce"
+                  className="m-auto md:mx-0 h-[30vh] md:h-[36vh] block relative rounded overflow-hidden"
+                  src="https://m.media-amazon.com/images/I/71HFM5GXXjL._AC_UY550_.jpg"
+                />
+
+                <div className="mt-4 text-center md:text-left">
+                  <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
+                    T-Shirt
+                  </h3>
+                  <h2 className="text-white title-font text-lg font-medium">
+                    Wear The Code
+                  </h2>
+                  <p className="mt-1">৳599</p>
+                  <p className="mt-1">S,M,L,XL,XXL</p>
+                </div>
+              </Link>
+            </div>
+            <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-5">
+              <Link href={"/product/wear-the-code"}>
+                <img
+                  alt="ecommerce"
+                  className="m-auto md:mx-0 h-[30vh] md:h-[36vh] block relative rounded overflow-hidden"
+                  src="https://m.media-amazon.com/images/I/71HFM5GXXjL._AC_UY550_.jpg"
+                />
+
                 <div className="mt-4 text-center md:text-left">
                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                     T-Shirt
