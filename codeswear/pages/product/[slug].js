@@ -1,8 +1,24 @@
 import { useRouter } from 'next/router'
+import { useState } from 'react';
 
 const Post = () => {
   const router = useRouter()
   const {slug} = router.query;
+  const [pin,setPin] = useState();
+  const [service,setService] = useState();
+
+  const checkServiceAbility = async () =>{
+    let pins = fetch('http://localhost:3000/api/pincode');
+    let pinJson = await pins.json();
+    if(pinJson.includes(pin)){
+      setService(true);
+    }else{
+      setService(false);
+    }
+  }
+  const onChangePin = (e) =>{
+    setPin(e.target.value);
+  }
   return <>
   <section className="text-gray-400 bg-gray-900 body-font overflow-hidden">
   <div className="container px-5 py-16 mx-auto">
@@ -80,6 +96,12 @@ const Post = () => {
             <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-5 h-5" viewBox="0 0 24 24">
               <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
             </svg>
+          </button>
+        </div>
+        <div className="pin mt-6 flex space-x-2 text-sm">
+          <input onChange={onChangePin} className='px-2 border-2 border-gray-400 rounded-md' type="text" />
+          <button onClick={checkServiceAbility} className=" text-white bg-pink-500 border-0 py-2 px-6 focus:outline-none hover:bg-pink-600 rounded">
+            Check
           </button>
         </div>
       </div>
