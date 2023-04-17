@@ -8,9 +8,9 @@ const Post = () => {
   const [service,setService] = useState();
 
   const checkServiceAbility = async () =>{
-    let pins = fetch('http://localhost:3000/api/pincode');
+    let pins = await fetch('http://localhost:3000/api/pincode');
     let pinJson = await pins.json();
-    if(pinJson.includes(pin)){
+    if(pinJson.includes(parseInt(pin))){
       setService(true);
     }else{
       setService(false);
@@ -25,8 +25,8 @@ const Post = () => {
     <div className="lg:w-4/5 mx-auto flex flex-wrap">
       <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto px-24 object-cover object-top rounded" src="https://m.media-amazon.com/images/I/61B4zCWGW6L._AC_UX342_.jpg"/>
       <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-        <h2 className="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2>
-        <h1 className="text-white text-3xl title-font font-medium mb-1">The Catcher in the Rye</h1>
+        <h2 className="text-sm title-font text-gray-500 tracking-widest">CodesWear</h2>
+        <h1 className="text-white text-3xl title-font font-medium mb-1">Wear The Code (XL/BLUE)</h1>
         <div className="flex mb-4">
           <span className="flex items-center">
             <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 text-pink-400" viewBox="0 0 24 24">
@@ -90,8 +90,9 @@ const Post = () => {
           </div>
         </div>
         <div className="flex">
-          <span className="title-font font-medium text-2xl text-white">$58.00</span>
-          <button className="flex ml-14 text-white bg-pink-500 border-0 py-2 px-6 focus:outline-none hover:bg-pink-600 rounded">Add To Cart</button>
+          <span className="title-font font-medium text-2xl text-white">৳499</span>
+          <button className="flex ml-8 text-white bg-pink-500 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-pink-600 rounded">Buy Now</button>
+          <button className="flex ml-4 text-white bg-pink-500 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-pink-600 rounded">Add To Cart</button>
           <button className="rounded-full w-10 h-10 bg-gray-800 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
             <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-5 h-5" viewBox="0 0 24 24">
               <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
@@ -99,11 +100,17 @@ const Post = () => {
           </button>
         </div>
         <div className="pin mt-6 flex space-x-2 text-sm">
-          <input onChange={onChangePin} className='px-2 border-2 border-gray-400 rounded-md' type="text" />
+          <input placeholder='Enter your pin code' onChange={onChangePin} className='px-2 border-2 border-gray-400 rounded-md' type="text" />
           <button onClick={checkServiceAbility} className=" text-white bg-pink-500 border-0 py-2 px-6 focus:outline-none hover:bg-pink-600 rounded">
             Check
           </button>
         </div>
+        {!service && service != null  && <div className='text-red-600 text-sm mt-3'>
+          Sorry,We do not deliver this pin code
+          </div>}
+        {service && service != null && <div className='text-green-600 text-sm mt-3'>
+          This pin code is serviceable.
+          </div>}
       </div>
     </div>
   </div>
