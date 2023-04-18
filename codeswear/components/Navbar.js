@@ -69,9 +69,9 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
             <div className="item flex my-5">
               <div className="w-2/3 font-semibold">{cart[k].name}</div>
               <div className="w-2/3 flex font-semibold justify-center items-center text-lg">
-                <AiFillMinusCircle className="cursor-pointer text-pink-500" />
+                <AiFillMinusCircle onClick={()=>removeFromCart(k,1,cart[k].price,cart[k].name,cart[k].size,cart[k].variant)} className="cursor-pointer text-pink-500" />
                 <span className="mx-2 text-sm">{cart[k].qty}</span>
-                <AiFillPlusCircle className="cursor-pointer text-pink-500" />
+                <AiFillPlusCircle onClick={()=>addToCart(k,1,cart[k].price,cart[k].name,cart[k].size,cart[k].variant)} className="cursor-pointer text-pink-500" />
               </div>
             </div>
           </li>
