@@ -7,6 +7,7 @@ import {
   AiFillPlusCircle,
   AiFillMinusCircle,
 } from "react-icons/ai";
+import { MdAccountCircle } from "react-icons/md";
 import { BsFillBagCheckFill } from "react-icons/bs";
 
 const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
@@ -44,17 +45,20 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
           </Link>
         </ul>
       </div>
-      <div
-        onClick={toggleCart}
-        className="cart cursor-pointer absolute right-0 mx-5 top-4"
-      >
-        <AiOutlineShoppingCart className="text-xl md:text-2xl" />
+      <div className="flex cart cursor-pointer absolute right-0 mx-5 top-4">
+        <Link href={'/login'}> <MdAccountCircle className="text-xl md:text-2xl mx-2" /> </Link>
+        <AiOutlineShoppingCart
+          onClick={toggleCart}
+          className="text-xl md:text-2xl"
+        />
       </div>
 
       <div
         ref={ref}
         className={`w-72 h-[100vh] sideCart absolute top-0 right-0 bg-pink-100 px-8 py-10 transform
-         transition-transform ${Object.keys(cart).length !== 0 ? 'translate-x-0' : 'translate-x-full'}`}
+         transition-transform ${
+           Object.keys(cart).length !== 0 ? "translate-x-0" : "translate-x-full"
+         }`}
       >
         <h2 className="font-bold text-xl text-center">Shopping Cart</h2>
         <span
@@ -64,35 +68,63 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
           <AiFillCloseCircle />
         </span>
         <ol className="list-decimal font-semibold">
-          {Object.keys(cart).length == 0 && 
-          <div className="my-4 font-semibold">Your cart is empty.</div>}
-          {Object.keys(cart).map((k)=>{return <li key={k}>
-            <div className="item flex my-5">
-              <div className="w-2/3 font-semibold">{cart[k].name}</div>
-              <div className="w-2/3 flex font-semibold justify-center items-center text-lg">
-                <AiFillMinusCircle onClick={()=>removeFromCart(k,1,cart[k].price,cart[k].name,cart[k].size,cart[k].variant)} className="cursor-pointer text-pink-500" />
-                <span className="mx-2 text-sm">{cart[k].qty}</span>
-                <AiFillPlusCircle onClick={()=>addToCart(k,1,cart[k].price,cart[k].name,cart[k].size,cart[k].variant)} className="cursor-pointer text-pink-500" />
-              </div>
-            </div>
-          </li>
+          {Object.keys(cart).length == 0 && (
+            <div className="my-4 font-semibold">Your cart is empty.</div>
+          )}
+          {Object.keys(cart).map((k) => {
+            return (
+              <li key={k}>
+                <div className="item flex my-5">
+                  <div className="w-2/3 font-semibold">{cart[k].name}</div>
+                  <div className="w-2/3 flex font-semibold justify-center items-center text-lg">
+                    <AiFillMinusCircle
+                      onClick={() =>
+                        removeFromCart(
+                          k,
+                          1,
+                          cart[k].price,
+                          cart[k].name,
+                          cart[k].size,
+                          cart[k].variant
+                        )
+                      }
+                      className="cursor-pointer text-pink-500"
+                    />
+                    <span className="mx-2 text-sm">{cart[k].qty}</span>
+                    <AiFillPlusCircle
+                      onClick={() =>
+                        addToCart(
+                          k,
+                          1,
+                          cart[k].price,
+                          cart[k].name,
+                          cart[k].size,
+                          cart[k].variant
+                        )
+                      }
+                      className="cursor-pointer text-pink-500"
+                    />
+                  </div>
+                </div>
+              </li>
+            );
           })}
         </ol>
 
         <div className="total font-bold my-2">Subtotal: ৳{subTotal}</div>
         <div className="flex">
-          <Link href={'/checkout'}>
-          <button
-            className="flex mr-2 text-white bg-pink-500 border-0
+          <Link href={"/checkout"}>
+            <button
+              className="flex mr-2 text-white bg-pink-500 border-0
          py-2 px-2 focus:outline-none hover:bg-pink-600 rounded text-sm"
-          >
-            <BsFillBagCheckFill className="m-1" />
-            Checkout
-          </button>
+            >
+              <BsFillBagCheckFill className="m-1" />
+              Checkout
+            </button>
           </Link>
           <button
-          onClick={clearCart}
-          className="flex mr-2 text-white bg-pink-500 border-0
+            onClick={clearCart}
+            className="flex mr-2 text-white bg-pink-500 border-0
           py-2 px-2 focus:outline-none hover:bg-pink-600 rounded text-sm"
           >
             Clear Cart
