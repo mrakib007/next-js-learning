@@ -26,7 +26,7 @@ export default function App({ Component, pageProps }) {
       setSubTotal(subt);
     }
   };
-  const addToCart = (itemCode, qty, price,size, name, variant) => {
+  const addToCart = (itemCode, qty, price,name, size, variant) => {
     let newCart = cart;
     if (itemCode in cart) {
       newCart[itemCode].qty = cart[itemCode].qty + qty;
