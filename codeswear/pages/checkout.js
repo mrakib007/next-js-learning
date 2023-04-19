@@ -1,8 +1,14 @@
+import Link from "next/link";
 import React from "react";
+import {
+  AiFillPlusCircle,
+  AiFillMinusCircle,
+} from "react-icons/ai";
+import { BsFillBagCheckFill } from "react-icons/bs";
 
-const Checkout = () => {
+const Checkout = ({cart,clearCart,subTotal,addToCart,removeFromCart}) => {
   return (
-    <div className="container m-auto">
+    <div className="container sm:m-auto px-2">
       <h1 className="font-bold text-3xl my-8 text-center">Checkout</h1>
       <h2 className="font-semibold text-xl">1. Delivery Details</h2>
       <div className="mx-auto flex my-2">
@@ -98,6 +104,41 @@ const Checkout = () => {
             />
           </div>
         </div>
+      </div>
+
+      <h2 className="font-semibold text-xl">2. Review Cart Items & Pay</h2>
+      <div
+        className="sideCart bg-pink-100 p-6 m-2"
+      >
+        <ol className="list-decimal font-semibold">
+          {Object.keys(cart).length == 0 && 
+          <div className="my-4 font-semibold">Your cart is empty.</div>}
+          {Object.keys(cart).map((k)=>{return <li key={k}>
+            <div className="item flex my-5">
+              <div className="font-semibold">{cart[k].name}</div>
+              <div className="w-2/3 flex font-semibold justify-center items-center text-lg">
+                <AiFillMinusCircle onClick={()=>removeFromCart(k,1,cart[k].price,cart[k].name,cart[k].size,cart[k].variant)} className="cursor-pointer text-pink-500" />
+                <span className="mx-2 text-sm">{cart[k].qty}</span>
+                <AiFillPlusCircle onClick={()=>addToCart(k,1,cart[k].price,cart[k].name,cart[k].size,cart[k].variant)} className="cursor-pointer text-pink-500" />
+              </div>
+              
+            </div>
+          </li>
+          })}
+          
+        </ol>
+        <span className="total font-bold">Subtotal: ৳{subTotal}</span>
+      </div>
+      <div className="mx-4">
+      <Link href={'/checkout'}>
+          <button
+            className="flex mr-2 text-white bg-pink-500 border-0
+         py-2 px-2 focus:outline-none hover:bg-pink-600 rounded text-sm"
+          >
+            <BsFillBagCheckFill className="m-1" />
+            Pay ৳{subTotal}
+          </button>
+          </Link>
       </div>
     </div>
   );
