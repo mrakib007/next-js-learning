@@ -1,7 +1,10 @@
+import Product from '@/models/Product';
+import mongoose from 'mongoose';
 import { useRouter } from 'next/router'
 import { useState } from 'react';
 
-const Post = ({addToCart}) => {
+const Post = ({addToCart,product,variants}) => {
+  console.log(product,variants)
   const router = useRouter()
   const {slug} = router.query;
   const [pin,setPin] = useState();
@@ -19,6 +22,14 @@ const Post = ({addToCart}) => {
   const onChangePin = (e) =>{
     setPin(e.target.value);
   }
+
+  const [color,setColor] = useState(product.color);
+  const [size,setSize] = useState(product.size);
+
+  const refreshVariant = () =>{
+    
+  }
+
   return <>
   <section className="text-gray-400 bg-gray-900 body-font overflow-hidden">
   <div className="container px-5 py-16 mx-auto">
@@ -67,19 +78,29 @@ const Post = ({addToCart}) => {
         <p className="leading-relaxed">Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean shorts keytar banjo tattooed umami cardigan.</p>
         <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-800 mb-5">
           <div className="flex">
-            <span className="mr-3">Color</span>
-            <button className="border-2 border-gray-800 rounded-full w-6 h-6 focus:outline-none"></button>
-            <button className="border-2 border-gray-800 ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none"></button>
-            <button className="border-2 border-gray-800 ml-1 bg-pink-500 rounded-full w-6 h-6 focus:outline-none"></button>
+           <span className="mr-3">Color</span>
+            {Object.keys(variants).includes('white') && Object.keys(variants['white']).includes(size) && <button className={`border-2
+             border-gray-800 rounded-full w-6 h-6 focus:outline-none ${color === 'white' ? 'border-black' : 'border-gray-300'}`}></button>}
+            {Object.keys(variants).includes('red') && Object.keys(variants['red']).includes(size) && <button className={`border-2
+             border-gray-800 ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none ${color === 'red' ? 'border-black' : 'border-gray-300'}`}></button>}
+            {Object.keys(variants).includes('green') && Object.keys(variants['green']).includes(size) && <button className={`border-2
+             border-gray-800 ml-1 bg-green-500 rounded-full w-6 h-6 focus:outline-none ${color === 'green' ? 'border-black' : 'border-gray-300'}`}></button>}
+            {Object.keys(variants).includes('blue') && Object.keys(variants['blue']).includes(size) && <button className={`border-2
+             border-gray-800 ml-1 bg-blue-500 rounded-full w-6 h-6 focus:outline-none ${color === 'blue' ? 'border-black' : 'border-gray-300'}`}></button>}
+            {Object.keys(variants).includes('purple') && Object.keys(variants['purple']).includes(size) && <button className={`border-2
+             border-gray-800 ml-1 bg-purple-500 rounded-full w-6 h-6 focus:outline-none ${color === 'purple' ? 'border-black' : 'border-gray-300'}`}></button>}
+            {Object.keys(variants).includes('black') && Object.keys(variants['black']).includes(size) && <button className={`border-2
+             border-gray-800 ml-1 bg-black rounded-full w-6 h-6 focus:outline-none ${color === 'black' ? 'border-black' : 'border-gray-300'}`}></button>}
           </div>
           <div className="flex ml-6 items-center">
             <span className="mr-3">Size</span>
             <div className="relative">
-              <select className="rounded border border-gray-700 focus:ring-2 focus:ring-pink-900 bg-transparent appearance-none py-2 focus:outline-none focus:border-pink-500 text-white pl-3 pr-10">
+              <select className="bg-gray-500 rounded border border-gray-700 focus:ring-2 focus:ring-pink-900 bg-transparent appearance-none py-2 focus:outline-none focus:border-pink-500 text-white pl-3 pr-10">
                 <option>SM</option>
                 <option>M</option>
                 <option>L</option>
                 <option>XL</option>
+                <option>XXL</option>
               </select>
               <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4" viewBox="0 0 24 24">
@@ -116,6 +137,28 @@ const Post = ({addToCart}) => {
   </div>
 </section>
   </>
+}
+
+export async function getServerSideProps(context) {
+  if (!mongoose.connections[0].readyState) {
+    await mongoose.connect(process.env.MONGO_URI);
+  }
+  let product = await Product.findOne({ slug: context.query.slug });
+  let variants = await Product.find({title: product.title})
+  let colorSizeSlug = {};
+  for (let item of variants){
+    if(Object.keys(colorSizeSlug).includes(item.color)){
+      colorSizeSlug[item.color][item.size] = {slug: item.slug}
+    }
+    else{
+      colorSizeSlug[item.color] = {};
+      colorSizeSlug[item.color][item.size] = {slug: item.slug}
+    }
+  }
+
+  return {
+    props: { product: JSON.parse(JSON.stringify(product)),variants: JSON.parse(JSON.stringify(colorSizeSlug)) },
+  };
 }
 
 export default Post
