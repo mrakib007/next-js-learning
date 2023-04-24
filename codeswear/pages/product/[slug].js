@@ -26,8 +26,9 @@ const Post = ({addToCart,product,variants}) => {
   const [color,setColor] = useState(product.color);
   const [size,setSize] = useState(product.size);
 
-  const refreshVariant = () =>{
-    
+  const refreshVariant = (newSize,newColor) =>{
+    let url = `http://localhost:3000/product/${variants[newColor][newSize]['slug']}`;
+    window.location = url;
   }
 
   return <>
@@ -79,28 +80,29 @@ const Post = ({addToCart,product,variants}) => {
         <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-800 mb-5">
           <div className="flex">
            <span className="mr-3">Color</span>
-            {Object.keys(variants).includes('white') && Object.keys(variants['white']).includes(size) && <button className={`border-2
+            {Object.keys(variants).includes('white') && Object.keys(variants['white']).includes(size) && <button onClick={()=>{refreshVariant(size,'white')}} className={`border-2
              border-gray-800 rounded-full w-6 h-6 focus:outline-none ${color === 'white' ? 'border-black' : 'border-gray-300'}`}></button>}
-            {Object.keys(variants).includes('red') && Object.keys(variants['red']).includes(size) && <button className={`border-2
+            {Object.keys(variants).includes('red') && Object.keys(variants['red']).includes(size) && <button onClick={()=>{refreshVariant(size,'red')}} className={`border-2
              border-gray-800 ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none ${color === 'red' ? 'border-black' : 'border-gray-300'}`}></button>}
-            {Object.keys(variants).includes('green') && Object.keys(variants['green']).includes(size) && <button className={`border-2
+            {Object.keys(variants).includes('green') && Object.keys(variants['green']).includes(size) && <button onClick={()=>{refreshVariant(size,'green')}} className={`border-2
              border-gray-800 ml-1 bg-green-500 rounded-full w-6 h-6 focus:outline-none ${color === 'green' ? 'border-black' : 'border-gray-300'}`}></button>}
-            {Object.keys(variants).includes('blue') && Object.keys(variants['blue']).includes(size) && <button className={`border-2
+            {Object.keys(variants).includes('blue') && Object.keys(variants['blue']).includes(size) && <button onClick={()=>{refreshVariant(size,'blue')}} className={`border-2
              border-gray-800 ml-1 bg-blue-500 rounded-full w-6 h-6 focus:outline-none ${color === 'blue' ? 'border-black' : 'border-gray-300'}`}></button>}
-            {Object.keys(variants).includes('purple') && Object.keys(variants['purple']).includes(size) && <button className={`border-2
+            {Object.keys(variants).includes('purple') && Object.keys(variants['purple']).includes(size) && <button onClick={()=>{refreshVariant(size,'purple')}} className={`border-2
              border-gray-800 ml-1 bg-purple-500 rounded-full w-6 h-6 focus:outline-none ${color === 'purple' ? 'border-black' : 'border-gray-300'}`}></button>}
-            {Object.keys(variants).includes('black') && Object.keys(variants['black']).includes(size) && <button className={`border-2
+            {Object.keys(variants).includes('black') && Object.keys(variants['black']).includes(size) && <button onClick={()=>{refreshVariant(size,'black')}} className={`border-2
              border-gray-800 ml-1 bg-black rounded-full w-6 h-6 focus:outline-none ${color === 'black' ? 'border-black' : 'border-gray-300'}`}></button>}
           </div>
           <div className="flex ml-6 items-center">
             <span className="mr-3">Size</span>
             <div className="relative">
-              <select className="bg-gray-500 rounded border border-gray-700 focus:ring-2 focus:ring-pink-900 bg-transparent appearance-none py-2 focus:outline-none focus:border-pink-500 text-white pl-3 pr-10">
-                <option>SM</option>
-                <option>M</option>
-                <option>L</option>
-                <option>XL</option>
-                <option>XXL</option>
+              <select value={size} onChange={(e)=>{refreshVariant(e.target.value,color)}} className="rounded border border-gray-700 focus:ring-2 focus:ring-pink-900 bg-transparent appearance-none py-2 focus:outline-none focus:border-pink-500 text-white pl-3 pr-10">
+                {Object.keys(variants[color]).includes('S') && <option className='bg-gray-500'>S</option>}
+                {Object.keys(variants[color]).includes('M') && <option className='bg-gray-500'>M</option>}
+                {Object.keys(variants[color]).includes('L') && <option className='bg-gray-500'>L</option>}
+                {Object.keys(variants[color]).includes('XL') && <option className='bg-gray-500'>XL</option>}
+                {Object.keys(variants[color]).includes('XXL') && <option className='bg-gray-500'>XXL</option>}
+                {/* {Object.keys(variants[color]).includes('XXL') && <option className='bg-gray-500' value={'XXL'}>XXL</option>} */}
               </select>
               <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4" viewBox="0 0 24 24">
