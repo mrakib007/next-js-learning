@@ -12,13 +12,33 @@ const Footer = () => {
               <Image src="/logo.png" alt="" width={200} height={40}/>
             </Link>
             <p className="mt-2 text-sm text-gray-500 px-4">
-              Air plant banjo lyft occupy retro adaptogen indego
+              Wear the &lt;code/&gt;  
             </p>
+            <p className="text-sm text-gray-500">Premium coding t-shirts,hoodies mugs and many more. </p>
           </div>
           <div className="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
               <h2 className="title-font font-medium text-white tracking-widest text-sm mb-3">
-                CATEGORIES
+                Shop
+              </h2>
+              <nav className="list-none mb-10">
+                <li>
+                  <Link href={'/tshirts'} className="text-gray-400 hover:text-white">T-Shirts</Link>
+                </li>
+                <li>
+                  <Link href={'/hoodies'} className="text-gray-400 hover:text-white">Hoodies</Link>
+                </li>
+                <li>
+                  <Link href={'/sticker'} className="text-gray-400 hover:text-white">Stickers</Link>
+                </li>
+                <li>
+                  <Link href={'/mugs'} className="text-gray-400 hover:text-white">Mugs</Link>
+                </li>
+              </nav>
+            </div>
+            <div className="lg:w-1/4 md:w-1/2 w-full px-4">
+              <h2 className="title-font font-medium text-white tracking-widest text-sm mb-3">
+                Policy
               </h2>
               <nav className="list-none mb-10">
                 <li>
@@ -37,7 +57,7 @@ const Footer = () => {
             </div>
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
               <h2 className="title-font font-medium text-white tracking-widest text-sm mb-3">
-                CATEGORIES
+                About
               </h2>
               <nav className="list-none mb-10">
                 <li>
@@ -56,26 +76,7 @@ const Footer = () => {
             </div>
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
               <h2 className="title-font font-medium text-white tracking-widest text-sm mb-3">
-                CATEGORIES
-              </h2>
-              <nav className="list-none mb-10">
-                <li>
-                  <a className="text-gray-400 hover:text-white">First Link</a>
-                </li>
-                <li>
-                  <a className="text-gray-400 hover:text-white">Second Link</a>
-                </li>
-                <li>
-                  <a className="text-gray-400 hover:text-white">Third Link</a>
-                </li>
-                <li>
-                  <a className="text-gray-400 hover:text-white">Fourth Link</a>
-                </li>
-              </nav>
-            </div>
-            <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-              <h2 className="title-font font-medium text-white tracking-widest text-sm mb-3">
-                CATEGORIES
+                Contact
               </h2>
               <nav className="list-none mb-10">
                 <li>
@@ -97,7 +98,7 @@ const Footer = () => {
         <div className="bg-gray-800 bg-opacity-75">
           <div className="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
             <p className="text-gray-400 text-sm text-center sm:text-left">
-              © 2020 Tailblocks —
+              © 2023 CodesWear.com - All Rights Reserved
               <a
                 href="https://twitter.com/knyttneve"
                 rel="noopener noreferrer"

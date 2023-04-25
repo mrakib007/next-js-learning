@@ -11,7 +11,7 @@ import { MdAccountCircle } from "react-icons/md";
 import { BsFillBagCheckFill } from "react-icons/bs";
 
 const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
-  console.log(cart, addToCart, removeFromCart, clearCart, subTotal);
+  const ref = useRef();
   const toggleCart = () => {
     if (ref.current.classList.contains("translate-x-full")) {
       ref.current.classList.remove("translate-x-full");
@@ -21,7 +21,7 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
       ref.current.classList.add("translate-x-full");
     }
   };
-  const ref = useRef();
+ 
   return (
     <div className="flex md:flex-row md:justify-start flex-col justify-center items-center py-2 shadow-md sticky top-0 bg-white z-10">
       <div className="logo mx-5">
@@ -32,16 +32,16 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
       <div className="nav">
         <ul className="flex items-center space-x-6 font-bold md:text-md">
           <Link href={"/tshirts"}>
-            <li>TShirts</li>
+            <li className="hover:text-pink-500">TShirts</li>
           </Link>
           <Link href={"/hoodies"}>
-            <li>Hoodies</li>
+            <li className="hover:text-pink-500">Hoodies</li>
           </Link>
           <Link href={"/stickers"}>
-            <li>Stickers</li>
+            <li className="hover:text-pink-500">Stickers</li>
           </Link>
           <Link href={"/mugs"}>
-            <li>Mugs</li>
+            <li className="hover:text-pink-500">Mugs</li>
           </Link>
         </ul>
       </div>
@@ -75,7 +75,7 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
             return (
               <li key={k}>
                 <div className="item flex my-5">
-                  <div className="w-2/3 font-semibold">{cart[k].name}</div>
+                  <div className="w-2/3 font-semibold">{cart[k].name}({cart[k].size}/{cart[k].variant})</div>
                   <div className="w-2/3 flex font-semibold justify-center items-center text-lg">
                     <AiFillMinusCircle
                       onClick={() =>
