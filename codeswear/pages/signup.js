@@ -1,9 +1,63 @@
-import Link from 'next/link';
-import React from 'react'
+import Link from "next/link";
+import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Signup = () => {
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  const handleChange = (e) => {
+    if (e.target.name === "name") {
+      setName(e.target.value);
+    } else if (e.target.name === "email") {
+      setEmail(e.target.value);
+    } else if (e.target.name === "password") {
+      setPassword(e.target.value);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = { name, email, password };
+    let res = await fetch("http://localhost:3000/api/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    let response = await res.json();
+    setEmail("");
+    setName("");
+    setPassword("");
+    toast.success('Your Account Has Been Created.', {
+      position: "top-left",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      });
+  };
+
   return (
     <div>
+      <ToastContainer
+        position="bottom-left"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
@@ -17,7 +71,7 @@ const Signup = () => {
           <p className="mt-10 text-center text-sm text-gray-500">
             or
             <Link
-              href={'/login'}
+              href={"/login"}
               className="mx-2 font-semibold leading-6 text-pink-600 hover:text-pink-500"
             >
               Login
@@ -26,7 +80,7 @@ const Signup = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
+          <form onSubmit={handleSubmit} className="space-y-6" method="POST">
             <div>
               <label
                 htmlFor="name"
@@ -36,6 +90,8 @@ const Signup = () => {
               </label>
               <div className="mt-2">
                 <input
+                  value={name}
+                  onChange={handleChange}
                   id="name"
                   name="name"
                   type="text"
@@ -54,6 +110,8 @@ const Signup = () => {
               </label>
               <div className="mt-2">
                 <input
+                  value={email}
+                  onChange={handleChange}
                   id="email"
                   name="email"
                   type="email"
@@ -72,10 +130,11 @@ const Signup = () => {
                 >
                   Password
                 </label>
-                
               </div>
               <div className="mt-2">
                 <input
+                  value={password}
+                  onChange={handleChange}
                   id="password"
                   name="password"
                   type="password"
@@ -99,6 +158,6 @@ const Signup = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Signup;
