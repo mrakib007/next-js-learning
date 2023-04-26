@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import { useRouter } from 'next/router'
 import { useState } from 'react';
 
-const Post = ({addToCart,product,variants}) => {
+const Post = ({addToCart,product,variants,buyNow}) => {
   console.log(product,variants)
   const router = useRouter()
   const {slug} = router.query;
@@ -97,6 +97,8 @@ const Post = ({addToCart,product,variants}) => {
              border-gray-800 ml-1 bg-blue-500 rounded-full w-6 h-6 focus:outline-none ${color === 'blue' ? 'border-black' : 'border-gray-300'}`}></button>}
             {Object.keys(variants).includes('purple') && Object.keys(variants['purple']).includes(size) && <button onClick={()=>{refreshVariant(size,'purple')}} className={`border-2
              border-gray-800 ml-1 bg-purple-500 rounded-full w-6 h-6 focus:outline-none ${color === 'purple' ? 'border-black' : 'border-gray-300'}`}></button>}
+            {Object.keys(variants).includes('yellow') && Object.keys(variants['yellow']).includes(size) && <button onClick={()=>{refreshVariant(size,'yellow')}} className={`border-2
+             border-gray-800 ml-1 bg-yellow-500 rounded-full w-6 h-6 focus:outline-none ${color === 'yellow' ? 'border-black' : 'border-gray-300'}`}></button>}
             {Object.keys(variants).includes('black') && Object.keys(variants['black']).includes(size) && <button onClick={()=>{refreshVariant(size,'black')}} className={`border-2
              border-gray-800 ml-1 bg-black rounded-full w-6 h-6 focus:outline-none ${color === 'black' ? 'border-black' : 'border-gray-300'}`}></button>}
           </div>
@@ -122,7 +124,7 @@ const Post = ({addToCart,product,variants}) => {
         <div className="flex">
           <span className="title-font font-medium text-2xl text-white">৳499</span>
 
-          <button className="flex ml-8 text-white bg-pink-500 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-pink-600 rounded">Buy Now</button>
+          <button onClick={()=>buyNow(slug,1,599,product.title,size,color)} className="flex ml-8 text-white bg-pink-500 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-pink-600 rounded">Buy Now</button>
           <button onClick={() => {addToCart(slug,1,599,product.title,size,color)}} className="flex ml-4 text-white bg-pink-500 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-pink-600 rounded">Add To Cart</button>
 
           {/* <button className="rounded-full w-10 h-10 bg-gray-800 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
