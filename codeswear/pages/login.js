@@ -2,16 +2,15 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/router";
 
 const Login = () => {
-  const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const router = useRouter();
 
   const handleChange = (e) => {
-    if (e.target.name === "name") {
-      setName(e.target.value);
-    } else if (e.target.name === "email") {
+     if (e.target.name === "email") {
       setEmail(e.target.value);
     } else if (e.target.name === "password") {
       setPassword(e.target.value);
@@ -20,8 +19,8 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = { name, email, password };
-    let res = await fetch("http://localhost:3000/api/signup", {
+    const data = { email, password };
+    let res = await fetch("http://localhost:3000/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -30,9 +29,9 @@ const Login = () => {
     });
     let response = await res.json();
     setEmail("");
-    setName("");
     setPassword("");
-    toast.success('Your Account Has Been Created.', {
+    if(response.success){
+      toast.success('You are successfully logged in.', {
       position: "top-left",
       autoClose: 3000,
       hideProgressBar: false,
@@ -42,9 +41,36 @@ const Login = () => {
       progress: undefined,
       theme: "dark",
       });
+      setTimeout(()=>{
+        router.push('http://localhost:3000');
+      },2000)   
+    }else{
+      toast.error(response.error, {
+        position: "top-left",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
+    }
   };
   return (
     <div>
+      <ToastContainer
+        position="bottom-left"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
@@ -67,7 +93,7 @@ const Login = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
+          <form onSubmit={handleSubmit} className="space-y-6" method="POST">
             <div>
               <label
                 htmlFor="email"
@@ -76,7 +102,7 @@ const Login = () => {
                 Email address
               </label>
               <div className="mt-2">
-                <input
+                <input value={email} onChange={handleChange}
                   id="email"
                   name="email"
                   type="email"
@@ -104,7 +130,7 @@ const Login = () => {
                 </div>
               </div>
               <div className="mt-2">
-                <input
+                <input value={password} onChange={handleChange}
                   id="password"
                   name="password"
                   type="password"
