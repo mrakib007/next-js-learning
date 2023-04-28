@@ -2,11 +2,14 @@ import "@/styles/globals.css";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { useEffect, useReducer, useState } from "react";
+import { useRouter } from "next/router";
 
 export default function App({ Component, pageProps }) {
   const [cart, setCart] = useState({});
   const [subTotal, setSubTotal] = useState(0);
-  const router = useReducer();
+  const [user,setUser] = useState({value: null});
+  const [key,setKey] = useState(0);
+  const router = useRouter();
 
   useEffect(() => {
     try {
@@ -18,7 +21,12 @@ export default function App({ Component, pageProps }) {
       console.error(error);
       localStorage.clear();
     }
-    
+    const token = localStorage.getItem('token');
+    if(token){
+      setUser({value: token});
+      setKey(Math.random());
+    }
+
   }, []);
 
   const saveCart = (myCart) => {
@@ -68,7 +76,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      <Navbar key={subTotal} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart}
+      <Navbar user={user} key={key} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart}
       clearCart={clearCart} subTotal={subTotal}/>
       <Component buyNow={buyNow} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart}
       clearCart={clearCart} subTotal={subTotal} {...pageProps} />
