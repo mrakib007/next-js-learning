@@ -27,8 +27,13 @@ export default function App({ Component, pageProps }) {
       setKey(Math.random());
     }
 
-  }, []);
+  }, [router.query]);
 
+  const logout = () =>{
+    localStorage.removeItem('token');
+    setUser({value:null});
+    setKey(Math.random());
+  }
   const saveCart = (myCart) => {
     localStorage.setItem("cart", JSON.stringify(myCart));
     let subt = 0;
@@ -76,7 +81,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      <Navbar user={user} key={key} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart}
+      <Navbar logout={logout} user={user} key={key} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart}
       clearCart={clearCart} subTotal={subTotal}/>
       <Component buyNow={buyNow} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart}
       clearCart={clearCart} subTotal={subTotal} {...pageProps} />
