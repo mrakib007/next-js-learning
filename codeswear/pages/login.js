@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
@@ -8,6 +8,12 @@ const Login = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const router = useRouter();
+
+  useEffect(()=>{
+    if(localStorage.getItem('token')){
+      router.push('/');
+    }
+  },[])
 
   const handleChange = (e) => {
      if (e.target.name === "email") {
@@ -152,15 +158,7 @@ const Login = () => {
             </div>
           </form>
 
-          <p className="mt-10 text-center text-sm text-gray-500">
-            Not a member?{" "}
-            <a
-              href="#"
-              className="font-semibold leading-6 text-pink-600 hover:text-pink-500"
-            >
-              Start a 14 day free trial
-            </a>
-          </p>
+          
         </div>
       </div>
     </div>
