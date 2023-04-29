@@ -49,7 +49,7 @@ const Navbar = ({ logout,user,cart, addToCart, removeFromCart, clearCart, subTot
       </div>
       <div className="flex items-center cart cursor-pointer absolute right-0 mx-5 top-4">
      
-      <a onMouseOver={()=>{setDropdown(true)}} onMouseLeave={()=>{setDropdown(false)}}>
+      <span onMouseOver={()=>{setDropdown(true)}} onMouseLeave={()=>{setDropdown(false)}}>
       {dropdown &&  <div onMouseOver={()=>{setDropdown(true)}} onMouseLeave={()=>{setDropdown(false)}} className="absolute right-8 bg-white border top-6 py-4 rounded-md px-5 w-32">
         <ul>
         <Link href={'/myAccount'}><li className="py-1 hover:text-pink-700 font-bold text-sm">My Account</li> </Link> 
@@ -57,9 +57,8 @@ const Navbar = ({ logout,user,cart, addToCart, removeFromCart, clearCart, subTot
         <li onClick={logout} className="py-1 hover:text-pink-700 font-bold text-sm">Logout</li>
         </ul>
       </div>}
-
       {user.value && <MdAccountCircle  className="text-xl md:text-2xl mx-2" />}
-      </a>
+      </span>
         {!user.value && <Link href={"/login"}>
           <button className="bg-pink-400 px-2 mx-2 py-1 rounded-md text-sm text-white">Login</button>
         </Link>}
